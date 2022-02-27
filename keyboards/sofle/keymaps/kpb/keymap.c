@@ -41,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_RAISE] = LAYOUT( \
-  _______, _______, _______, _______, _______,  _______,                         _______, _______,  _______, _______,  _______ , _______, \
-  _______, KC_INS,  KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         KC_PGUP, KC_PRVWD, KC_UP,   KC_NXTWD, KC_DLINE, KC_BSPC, \
-  _______, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  KC_CAPS,                         KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT,  KC_DEL,   _______, \
-  _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  XXXXXXX,  _______, \
+  _______, _______, _______, _______, _______,  _______,                         _______, _______,  _______, _______, _______ , _______, \
+  _______, KC_INS,  KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         XXXXXXX, KC_PGUP,  KC_UP,   KC_PGDN, KC_DLINE, KC_BSPC, \
+  _______, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  KC_CAPS,                         XXXXXXX, KC_LEFT,  KC_DOWN, KC_RGHT, KC_DEL,   _______, \
+  _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND, XXXXXXX,  _______, \
                     _______, _______, _______,  _______, _______,       _______, _______, _______,  _______, _______ \
 ),
 
@@ -321,11 +321,19 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
             tap_code(KC_VOLU);
         }
     } else if (index == 1) {  // Right encoder
-        if (clockwise) {
-            rgb_matrix_decrease_val_noeeprom();
-        } else {
-            rgb_matrix_increase_val_noeeprom();
-        }
+    	if (get_highest_layer(layer_state) == _LOWER) {
+			if (clockwise) {
+				tap_code(KC_BRID);
+			} else {
+				tap_code(KC_BRIU);
+			}
+		} else {
+			if (clockwise) {
+				rgb_matrix_decrease_val_noeeprom();
+			} else {
+				rgb_matrix_increase_val_noeeprom();
+			}
+		}
     }
     return true;
 }
