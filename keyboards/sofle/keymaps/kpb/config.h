@@ -16,6 +16,13 @@
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_OLED_ENABLE
 
+// Some space-saving things
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+#define NO_ACTION_ONESHOT
+#define NO_ACTION_TAPPING
+#define LAYER_STATE_8BIT   // Limits to 8 layers
+
 // RGB Configuration
 // The pin connected to the data pin of the LEDs
 #define RGBLED_NUM 29
