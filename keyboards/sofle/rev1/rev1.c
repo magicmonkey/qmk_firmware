@@ -31,6 +31,7 @@
   //
   //     08 17 18 27 28     28 27 18 17 08      4
   //    07    06    05       05    06    07
+/*
 
 led_config_t g_led_config = {
     {
@@ -84,4 +85,5 @@ led_config_t g_led_config = {
         LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT
     }
 };
+*/
 #endif
