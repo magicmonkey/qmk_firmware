@@ -117,6 +117,10 @@ static void print_status_narrow(void) {
         default:
             oled_write_ln_P(PSTR("Undef"), false);
     }
+    oled_write_P(PSTR("\nWPM\n"), false);
+    char wpmnum[4];
+    itoa(get_current_wpm(), wpmnum, 10);
+    oled_write(wpmnum, false);
     oled_write_P(PSTR("\n\n"), false);
 }
 
@@ -327,3 +331,5 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 }
 
 #endif
+
+
